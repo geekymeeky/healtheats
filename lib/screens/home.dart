@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healtheats/screens/dishes.dart';
+import 'package:healtheats/screens/featured.dart';
 import 'package:healtheats/widgets/grid_product.dart';
 import 'package:healtheats/widgets/slider_item.dart';
 import 'package:healtheats/util/foods.dart';

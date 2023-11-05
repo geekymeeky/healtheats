@@ -13,8 +13,9 @@ class _DishesScreenState extends State<DishesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         iconTheme: IconThemeData(color: Theme.of(context).colorScheme.primary),
         surfaceTintColor: Theme.of(context).colorScheme.surfaceTint,
         foregroundColor: Theme.of(context).colorScheme.primary,
@@ -27,7 +28,7 @@ class _DishesScreenState extends State<DishesScreen> {
         ),
         centerTitle: true,
         title: const Text(
-          "Dishes",
+          "Featured",
         ),
         elevation: 0.0,
       ),
