@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healtheats/screens/featured.dart';
+import 'package:healtheats/util/categories.dart';
+import 'package:healtheats/util/home_category.dart';
 import 'package:healtheats/widgets/grid_product.dart';
 import 'package:healtheats/widgets/slider_item.dart';
 import 'package:healtheats/util/foods.dart';
@@ -79,6 +81,33 @@ class _HomeState extends State<Home> {
                   setState(() {});
                 }),
           ),
+          const SizedBox(height: 20.0),
+          const Text(
+            "Food Categories",
+            style: TextStyle(
+              fontSize: 23,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+          const SizedBox(height: 10.0),
+          SizedBox(
+            height: 65.0,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: categories.length,
+              itemBuilder: (BuildContext context, int index) {
+                Map cat = categories[index];
+                return HomeCategory(
+                  icon: cat['icon'],
+                  title: cat['name'],
+                  items: cat['items'].toString(),
+                  isHome: true,
+                );
+              },
+            ),
+          ),
+          const SizedBox(height: 20.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
