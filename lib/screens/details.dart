@@ -5,7 +5,10 @@ import 'package:healtheats/util/fallback.dart';
 import 'package:healtheats/widgets/rating.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key, required this.food});
+  const ProductDetails({
+    required this.food,
+    super.key,
+  });
 
   final Food food;
 

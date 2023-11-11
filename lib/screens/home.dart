@@ -67,10 +67,8 @@ class _HomeState extends State<Home> {
               (index, i) {
                 Food food = foods[index];
                 return SliderItem(
-                  img: food.img,
+                  food: food,
                   isFav: false,
-                  name: food.name,
-                  rating: 5.0,
                   raters: 23,
                 );
               },
