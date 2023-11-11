@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:healtheats/models/food.dart';
 import 'package:healtheats/screens/details.dart';
 import 'package:healtheats/util/const.dart';
+import 'package:healtheats/util/fallback.dart';
 import 'package:healtheats/widgets/rating.dart';
 
 class GridProduct extends StatelessWidget {
-  final String name;
-  final String img;
+  final Food food;
   final bool isFav;
-  final double rating;
   final int raters;
 
   const GridProduct(
-      {Key? key,
-      required this.name,
-      required this.img,
-      required this.isFav,
-      required this.rating,
-      required this.raters})
+      {Key? key, required this.food, required this.isFav, required this.raters})
       : super(key: key);
 
   @override
@@ -34,8 +29,10 @@ class GridProduct extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
-                    img,
+                    food.img,
                     fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const FallbackFood(),
                   ),
                 ),
               ),
@@ -62,7 +59,7 @@ class GridProduct extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 2.0, top: 8.0),
             child: Text(
-              name,
+              food.name,
               style: const TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.w900,
@@ -78,11 +75,11 @@ class GridProduct extends StatelessWidget {
                   starCount: 5,
                   color: Constants.ratingBG,
                   allowHalfRating: true,
-                  rating: rating,
+                  rating: food.rating!.rating,
                   size: 10.0,
                 ),
                 Text(
-                  " $rating ($raters Reviews)",
+                  " ${food.rating!.rating} ($raters Reviews)",
                   style: const TextStyle(
                     fontSize: 11.0,
                   ),
@@ -96,7 +93,7 @@ class GridProduct extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) {
-              return const ProductDetails();
+              return ProductDetails(food: food);
             },
           ),
         );

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:healtheats/models/food.dart';
 import 'package:healtheats/util/const.dart';
-import 'package:healtheats/util/foods.dart';
+import 'package:healtheats/util/fallback.dart';
 import 'package:healtheats/widgets/rating.dart';
 
-class ProductDetails extends StatefulWidget {
-  const ProductDetails({super.key});
+class ProductDetails extends StatelessWidget {
+  const ProductDetails({super.key, required this.food});
 
-  @override
-  State<ProductDetails> createState() => _ProductDetailsState();
-}
+  final Food food;
 
-class _ProductDetailsState extends State<ProductDetails> {
-  bool isFav = false;
+  final isFav = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,8 +45,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
-                      "${foods[1]['img']}",
+                      food.img,
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const FallbackFood(),
                     ),
                   ),
                 ),
@@ -74,7 +74,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             const SizedBox(height: 10.0),
             Text(
-              "${foods[1]['name']}",
+              food.name,
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w800,
@@ -93,9 +93,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                     size: 10.0,
                   ),
                   const SizedBox(width: 10.0),
-                  const Text(
-                    "5.0 (23 Reviews)",
-                    style: TextStyle(
+                  Text(
+                    "${food.rating?.rating} (${food.rating?.count} Reviews)",
+                    style: const TextStyle(
                       fontSize: 11.0,
                     ),
                   ),
@@ -135,19 +135,9 @@ class _ProductDetailsState extends State<ProductDetails> {
               maxLines: 2,
             ),
             const SizedBox(height: 10.0),
-            const Text(
-              "Nulla quis lorem ut libero malesuada feugiat. Lorem ipsum dolor "
-              "sit amet, consectetur adipiscing elit. Curabitur aliquet quam "
-              "id dui posuere blandit. Pellentesque in ipsum id orci porta "
-              "dapibus. Vestibulum ante ipsum primis in faucibus orci luctus "
-              "et ultrices posuere cubilia Curae; Donec velit neque, auctor "
-              "sit amet aliquam vel, ullamcorper sit amet ligula. Donec"
-              " rutrum congue leo eget malesuada. Vivamus magna justo,"
-              " lacinia eget consectetur sed, convallis at tellus."
-              " Vivamus suscipit tortor eget felis porttitor volutpat."
-              " Donec rutrum congue leo eget malesuada."
-              " Pellentesque in ipsum id orci porta dapibus.",
-              style: TextStyle(
+            Text(
+              food.description,
+              style: const TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w300,
               ),

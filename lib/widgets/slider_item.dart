@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:healtheats/screens/details.dart';
 import 'package:healtheats/util/const.dart';
+import 'package:healtheats/util/fallback.dart';
 import 'package:healtheats/widgets/rating.dart';
 
 class SliderItem extends StatelessWidget {
@@ -36,6 +36,8 @@ class SliderItem extends StatelessWidget {
                   child: Image.asset(
                     img,
                     fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const FallbackFood(),
                   ),
                 ),
               ),
@@ -44,14 +46,14 @@ class SliderItem extends StatelessWidget {
                 bottom: 3.0,
                 child: RawMaterialButton(
                   onPressed: () {},
-                  fillColor: Colors.white,
+                  fillColor: Theme.of(context).colorScheme.surfaceTint,
                   shape: const CircleBorder(),
                   elevation: 4.0,
                   child: Padding(
                     padding: const EdgeInsets.all(5),
                     child: Icon(
                       isFav ? Icons.favorite : Icons.favorite_border,
-                      color: Colors.red,
+                      color: Theme.of(context).colorScheme.onInverseSurface,
                       size: 17,
                     ),
                   ),
@@ -96,7 +98,7 @@ class SliderItem extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) {
-              return const ProductDetails();
+              return const Placeholder();
             },
           ),
         );

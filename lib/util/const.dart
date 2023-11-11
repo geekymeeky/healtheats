@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Constants {
   static const String appName = "HealthEats";
+  static const String kFallbackImage = "assets/food1.jpg";
 
   static Color lightPrimary = const Color(0xFFFBFDF8);
   static Color darkPrimary = const Color(0xFF191C1A);

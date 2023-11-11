@@ -38,15 +38,9 @@ class _FavoriteScreenState extends State<FavoriteScreen>
             ),
             itemCount: foods.length,
             itemBuilder: (BuildContext context, int index) {
-//                Food food = Food.fromJson(foods[index]);
-              Map food = foods[index];
-//                print(foods);
-//                print(foods.length);
               return GridProduct(
-                img: food['img'],
+                food: foods[index],
                 isFav: true,
-                name: food['name'],
-                rating: 5.0,
                 raters: 23,
               );
             },

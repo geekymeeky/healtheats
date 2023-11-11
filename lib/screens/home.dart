@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healtheats/models/food.dart';
 import 'package:healtheats/screens/featured.dart';
 import 'package:healtheats/util/categories.dart';
 import 'package:healtheats/util/home_category.dart';
@@ -64,11 +65,11 @@ class _HomeState extends State<Home> {
             items: map<Widget>(
               foods,
               (index, i) {
-                Map food = foods[index];
+                Food food = foods[index];
                 return SliderItem(
-                  img: food['img'],
+                  img: food.img,
                   isFav: false,
-                  name: food['name'],
+                  name: food.name,
                   rating: 5.0,
                   raters: 23,
                 );
@@ -141,12 +142,9 @@ class _HomeState extends State<Home> {
             ),
             itemCount: foods.length,
             itemBuilder: (BuildContext context, int index) {
-              Map food = foods[index];
               return GridProduct(
-                img: food['img'],
+                food: foods[index],
                 isFav: false,
-                name: food['name'],
-                rating: 5.0,
                 raters: 23,
               );
             },

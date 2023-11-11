@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healtheats/screens/main_screen.dart';
+import 'package:healtheats/util/fallback.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class Walkthrough extends StatefulWidget {
@@ -92,6 +93,7 @@ class _WalkthroughState extends State<Walkthrough> {
       image: Image.asset(
         item['img'],
         height: 185.0,
+        errorBuilder: (context, error, stackTrace) => const FallbackFood(),
       ),
       decoration: PageDecoration(
         titleTextStyle: TextStyle(
