@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healtheats/screens/favorite_screen.dart';
 import 'package:healtheats/screens/home.dart';
+import 'package:healtheats/screens/profile.dart';
 import 'package:healtheats/util/const.dart';
 import 'package:healtheats/widgets/cutom_bottom_navigation.dart';
 
@@ -33,6 +34,22 @@ class _MainScreenState extends State<MainScreen> {
             Constants.appName,
           ),
           elevation: 0.0,
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return Profile();
+                    },
+                  ),
+                );
+              },
+              icon: const Icon(
+                Icons.settings,
+              ),
+            )
+          ],
         ),
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),

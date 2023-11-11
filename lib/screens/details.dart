@@ -31,7 +31,7 @@ class ProductDetails extends StatelessWidget {
         ),
         centerTitle: true,
         title: const Text(
-          "Item Details",
+          "Recipe Details",
         ),
         elevation: 0.0,
       ),
