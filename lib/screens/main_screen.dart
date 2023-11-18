@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:healtheats/screens/favorite_screen.dart';
 import 'package:healtheats/screens/home.dart';
 import 'package:healtheats/screens/profile.dart';
+import 'package:healtheats/screens/search.dart';
 import 'package:healtheats/util/const.dart';
 import 'package:healtheats/widgets/cutom_bottom_navigation.dart';
 
@@ -58,6 +59,7 @@ class _MainScreenState extends State<MainScreen> {
           children: const <Widget>[
             Home(),
             FavoriteScreen(),
+            SearchScreen(),
           ],
         ),
         bottomNavigationBar: CustomBottomNavigation(
