@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healtheats/models/food.dart';
+import 'package:healtheats/models/recipe.dart';
 import 'package:healtheats/util/const.dart';
 import 'package:healtheats/util/fallback.dart';
 import 'package:healtheats/widgets/rating.dart';
@@ -10,7 +10,7 @@ class ProductDetails extends StatelessWidget {
     super.key,
   });
 
-  final Food food;
+  final Recipe food;
 
   final isFav = false;
   @override

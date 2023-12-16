@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:healtheats/models/food.dart';
+import 'package:healtheats/models/recipe.dart';
+import 'package:healtheats/repositories/recipe.dart';
+import 'package:healtheats/responses/get_all_response.dart';
 import 'package:healtheats/screens/featured.dart';
 import 'package:healtheats/util/categories.dart';
 import 'package:healtheats/util/home_category.dart';
 import 'package:healtheats/widgets/grid_product.dart';
 import 'package:healtheats/widgets/slider_item.dart';
-import 'package:healtheats/util/foods.dart';
+import 'package:healtheats/util/recipes.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class Home extends StatefulWidget {
@@ -23,6 +25,12 @@ class _HomeState extends State<Home> {
     }
 
     return result;
+  }
+
+  Future<List<RecipePrismicResponse>?> getPrismicResponse() async {
+    RecipeRepository repo = RecipeRepository();
+
+    return await repo.getAll();
   }
 
   @override
@@ -63,9 +71,9 @@ class _HomeState extends State<Home> {
           const SizedBox(height: 10.0),
           CarouselSlider(
             items: map<Widget>(
-              foods,
+              recipes,
               (index, i) {
-                Food food = foods[index];
+                Recipe food = recipes[index];
                 return SliderItem(
                   food: food,
                   isFav: false,
@@ -138,16 +146,36 @@ class _HomeState extends State<Home> {
               childAspectRatio: MediaQuery.of(context).size.width /
                   (MediaQuery.of(context).size.height / 1.25),
             ),
-            itemCount: foods.length,
+            itemCount: recipes.length,
             itemBuilder: (BuildContext context, int index) {
               return GridProduct(
-                food: foods[index],
+                food: recipes[index],
                 isFav: false,
                 raters: 23,
               );
             },
           ),
           const SizedBox(height: 30),
+          // FutureBuilder<List<RecipePrismicResponse>?>(
+          //   future: getPrismicResponse(),
+          //   builder: (context, snapshot) {
+          //     switch (snapshot.connectionState) {
+          //       case ConnectionState.waiting:
+          //         return const Center(
+          //           child: CircularProgressIndicator(),
+          //         );
+          //       case ConnectionState.done:
+          //         if (snapshot.hasError) {
+          //           return Text(snapshot.error.toString());
+          //         } else {
+          //           return Text(snapshot.data![0].toJson().toString());
+          //         }
+
+          //       default:
+          //         return const Text('Unhandle State');
+          //     }
+          //   },
+          // ),
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healtheats/util/foods.dart';
+import 'package:healtheats/util/recipes.dart';
 import 'package:healtheats/widgets/grid_product.dart';
 
 class DishesScreen extends StatefulWidget {
@@ -57,7 +57,7 @@ class _DishesScreenState extends State<DishesScreen> {
               itemCount: 4,
               itemBuilder: (BuildContext context, int index) {
                 return GridProduct(
-                  food: foods[index],
+                  food: recipes[index],
                   isFav: false,
                   raters: 23,
                 );
@@ -85,7 +85,7 @@ class _DishesScreenState extends State<DishesScreen> {
               itemCount: 4,
               itemBuilder: (BuildContext context, int index) {
                 return GridProduct(
-                  food: foods[index],
+                  food: recipes[index],
                   isFav: false,
                   raters: 23,
                 );
@@ -113,7 +113,7 @@ class _DishesScreenState extends State<DishesScreen> {
               itemCount: 4,
               itemBuilder: (BuildContext context, int index) {
                 return GridProduct(
-                  food: foods[index],
+                  food: recipes[index],
                   isFav: false,
                   raters: 23,
                 );

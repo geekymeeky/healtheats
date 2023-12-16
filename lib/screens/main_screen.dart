@@ -41,7 +41,7 @@ class _MainScreenState extends State<MainScreen> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context) {
-                      return Profile();
+                      return const Profile();
                     },
                   ),
                 );

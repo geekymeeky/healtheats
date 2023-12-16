@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:healtheats/models/food.dart';
+import 'package:healtheats/models/recipe.dart';
 import 'package:healtheats/screens/details.dart';
 import 'package:healtheats/util/const.dart';
-import 'package:healtheats/util/foods.dart';
+import 'package:healtheats/util/recipes.dart';
 import 'package:healtheats/widgets/rating.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -83,9 +83,9 @@ class _SearchScreenState extends State<SearchScreen>
             shrinkWrap: true,
             primary: false,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: foods.length,
+            itemCount: recipes.length,
             itemBuilder: (BuildContext context, int index) {
-              Food food = foods[index];
+              Recipe food = recipes[index];
               return ListTile(
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 4, horizontal: 8),

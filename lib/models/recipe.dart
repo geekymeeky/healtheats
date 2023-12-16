@@ -1,27 +1,27 @@
 import 'dart:convert';
 
-Food foodFromJson(String str) => Food.fromJson(json.decode(str));
+Recipe foodFromJson(String str) => Recipe.fromJson(json.decode(str));
 
-String foodToJson(Food data) => json.encode(data.toJson());
+String foodToJson(Recipe data) => json.encode(data.toJson());
 
-class Food {
+class Recipe {
   String img;
   String name;
   String description;
-  FoodRating? rating;
+  RecipeRating? rating;
 
-  Food({
+  Recipe({
     required this.img,
     required this.name,
     required this.description,
     required this.rating,
   });
 
-  factory Food.fromJson(Map<String, dynamic> json) => Food(
+  factory Recipe.fromJson(Map<String, dynamic> json) => Recipe(
         img: json["img"],
         name: json["name"],
         description: json["description"],
-        rating: FoodRating.fromJson(json['rating']),
+        rating: RecipeRating.fromJson(json['rating']),
       );
 
   Map<String, dynamic> toJson() => {
@@ -32,16 +32,16 @@ class Food {
       };
 }
 
-class FoodRating {
+class RecipeRating {
   double rating;
   int count;
 
-  FoodRating({
+  RecipeRating({
     required this.rating,
     required this.count,
   });
 
-  factory FoodRating.fromJson(Map<String, dynamic> json) => FoodRating(
+  factory RecipeRating.fromJson(Map<String, dynamic> json) => RecipeRating(
         rating: json["rating"]?.toDouble(),
         count: json["count"],
       );

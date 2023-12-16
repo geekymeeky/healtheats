@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healtheats/util/categories.dart';
-import 'package:healtheats/util/foods.dart';
+import 'package:healtheats/util/recipes.dart';
 import 'package:healtheats/util/home_category.dart';
 import 'package:healtheats/widgets/grid_product.dart';
 
@@ -81,10 +81,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 childAspectRatio: MediaQuery.of(context).size.width /
                     (MediaQuery.of(context).size.height / 1.25),
               ),
-              itemCount: foods.length,
+              itemCount: recipes.length,
               itemBuilder: (BuildContext context, int index) {
                 return GridProduct(
-                  food: foods[index],
+                  food: recipes[index],
                   isFav: false,
                   raters: 23,
                 );
